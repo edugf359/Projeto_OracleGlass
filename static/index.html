@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OracleGlass AI Chat</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .home-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+    }
+    .home-title { font-size: 28px; font-weight: 600; color: var(--gray-800); }
+    .home-sub { color: var(--gray-500); font-size: 15px; }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-header">OracleGlass</div>
+    <div class="sidebar-new">
+      <a href="/new" class="btn-new">+ Novo chat</a>
+    </div>
+    <div class="sidebar-list" id="sidebar-list"></div>
+  </aside>
+
+  <main class="main home-main">
+    <h1 class="home-title">OracleGlass AI Chat</h1>
+    <p class="home-sub">Selecione um chat ou crie um novo para começar</p>
+    <a href="/new" class="btn-primary">+ Novo chat</a>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/sidebar.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => loadSidebar())</script>
+</body>
+</html>

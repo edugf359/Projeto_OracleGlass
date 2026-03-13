@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo chat — OracleGlass</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .new-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .new-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .new-card h2 { font-size: 18px; font-weight: 600; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 13px; font-weight: 500; color: var(--gray-600); }
+    .field input {
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      padding: 9px 12px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .field input:focus { border-color: var(--brand); }
+    .dropzone {
+      border: 2px dashed var(--gray-300);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      color: var(--gray-500);
+    }
+    .dropzone:hover, .dropzone.dragover {
+      border-color: var(--brand);
+      background: var(--brand-light);
+    }
+    .dropzone span { color: var(--brand); font-weight: 500; }
+    .dropzone small { display: block; margin-top: 4px; font-size: 12px; color: var(--gray-400); }
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+    .file-name { color: var(--gray-700); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-remove { color: var(--gray-400); font-size: 12px; cursor: pointer; flex-shrink: 0; margin-left: 8px; }
+    .file-remove:hover { color: #dc2626; }
+    #file-list { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+    #status-msg { font-size: 13px; color: var(--brand); min-height: 18px; }
+    .btn-primary { width: 100%; justify-content: center; padding: 11px; }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-header">OracleGlass</div>
+    <div class="sidebar-new">
+      <a href="/new" class="btn-new">+ Novo chat</a>
+    </div>
+    <div class="sidebar-list" id="sidebar-list"></div>
+  </aside>
+
+  <main class="main new-main">
+    <div class="new-card">
+      <h2>Novo chat</h2>
+
+      <div class="field">
+        <label for="chat-name">Nome do chat</label>
+        <input type="text" id="chat-name" placeholder="Ex: Contrato Fornecedor 2024">
+      </div>
+
+      <div class="field">
+        <label>Arquivos</label>
+        <div class="dropzone" id="dropzone">
+          Arraste arquivos aqui ou <span>clique para selecionar</span>
+          <small>PDF, DOCX ou TXT</small>
+        </div>
+        <div id="file-list"></div>
+      </div>
+
+      <p id="error-msg" class="error-msg"></p>
+      <p id="status-msg"></p>
+
+      <button class="btn-primary" id="create-btn">Criar e entrar no chat</button>
+
+      <input type="file" id="file-input" multiple accept=".pdf,.docx,.txt" style="display:none">
+    </div>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/sidebar.js"></script>
+  <script src="/static/js/new_chat.js"></script>
+</body>
+</html>
